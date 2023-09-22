@@ -1,6 +1,9 @@
-import './globals.css'
+import Navigation from '@/components/Navigation'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline'; // Import CssBaseline
+import theme from '@/Theme';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline /> {/* Add CssBaseline here */}
+        <Navigation />
+        {children}
+      </ThemeProvider>
+      </body>
     </html>
   )
 }
